@@ -9,14 +9,13 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.PagingAndSortingRepository;
 
 public interface UserRepository extends CrudRepository<User, Long>, PagingAndSortingRepository<User, Long> {
-	Set<User> findByLastName(String lastname);
+	Iterable <User> findByLastName(String lastname);
 
-	Set<User> findByFirstName(String firstname);
+	Iterable <User> findByFirstName(String firstname);
 
-	Optional<User> findByEmail(String email);
+	Optional  <User> findByEmail(String email);
 
 	Page<User> findAllByActiveTrue(Pageable pageable);
 
 	Page<User> findAllByActiveFalse(Pageable pageable);
-
 }

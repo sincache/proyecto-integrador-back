@@ -2,6 +2,7 @@ package org.generation.proyecto.integrador.controller;
 
 import org.generation.proyecto.integrador.model.User;
 import org.generation.proyecto.integrador.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -19,7 +20,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/v1/users")
 public class UserController {
-
+	
+	@Autowired
 	UserService userService;
 
 	public UserController(UserService userService) {
@@ -32,7 +34,7 @@ public class UserController {
 		return existingUser;
 	}
 
-	@GetMapping
+	@GetMapping("/api/v1/users")
 	Page<User> getAllUsers(@RequestParam(name = "active", required = false, defaultValue = "true") boolean isActive,
 			@RequestParam(name = "size", required = false, defaultValue = "5") int pageSize,
 			@RequestParam(name = "page", required = false, defaultValue = "0") int pageNumber) {
