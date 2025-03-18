@@ -10,5 +10,5 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 
 public interface CommentRepository extends CrudRepository <Comment, Long>, PagingAndSortingRepository<Comment, Long>{
 	Set<Comment> findByCreationDate(Date creationDate);
-	Set <Comment> findByAuthor(Date author); 
+	Set <Comment> findByUser(Date user); 
 }
