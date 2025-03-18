@@ -1,39 +1,43 @@
 package org.generation.proyecto.integrador.model;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "comments")
+@Table(name = "comentarios")
 public class Comment {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	@Column(name = "date", nullable = false)
-	private Date creationDate;
-	@Column(name = "content", nullable = false, length = 500)
-	private String content;
-	@Column(name="author", length = 1)
-	private String author;
-	@Column(name="rating", nullable = false)
-	private Integer raiting;
-	//TODO replicas a comentarios
+	@Column(name = "comentario", nullable = false, length = 500)
+	private String comment;
+	@Column(name = "fecha", nullable = false, length = 500)
+	private LocalDateTime date;
+	@OneToMany(mappedBy = "usuario_id_fk", cascade = CascadeType.ALL)
+    private Long userId;
+	@OneToMany(mappedBy = "position", cascade = CascadeType.ALL)
+    private Integer position;
+	@OneToMany(mappedBy = "root", cascade = CascadeType.ALL)
+    private Integer root;
 	
 	Comment(){}
-	
-	public Comment(Long id, Date creationDate, String content, String author, Integer raiting) {
+
+	public Comment(Long id, String comment, LocalDateTime date, Long userId, Integer position, Integer root) {
 		super();
 		this.id = id;
-		this.creationDate = creationDate;
-		this.content = content;
-		this.author = author;
-		this.raiting = raiting;
+		this.comment = comment;
+		this.date = date;
+		this.userId = userId;
+		this.position = position;
+		this.root = root;
 	}
 
 	public Long getId() {
@@ -44,36 +48,44 @@ public class Comment {
 		this.id = id;
 	}
 
-	public Date getCreationDate() {
-		return creationDate;
+	public String getComment() {
+		return comment;
 	}
 
-	public void setCreationDate(Date creationDate) {
-		this.creationDate = creationDate;
+	public void setComment(String comment) {
+		this.comment = comment;
 	}
 
-	public String getContent() {
-		return content;
+	public LocalDateTime getDate() {
+		return date;
 	}
 
-	public void setContent(String content) {
-		this.content = content;
+	public void setDate(LocalDateTime date) {
+		this.date = date;
 	}
 
-	public String getAuthor() {
-		return author;
+	public Long getUserId() {
+		return userId;
 	}
 
-	public void setAuthor(String author) {
-		this.author = author;
+	public void setUserId(Long userId) {
+		this.userId = userId;
 	}
 
-	public Integer getRaiting() {
-		return raiting;
+	public Integer getPosition() {
+		return position;
 	}
 
-	public void setRaiting(Integer raiting) {
-		this.raiting = raiting;
+	public void setPosition(Integer position) {
+		this.position = position;
+	}
+
+	public Integer getRoot() {
+		return root;
+	}
+
+	public void setRoot(Integer root) {
+		this.root = root;
 	}
 
 	@Override
@@ -81,18 +93,20 @@ public class Comment {
 		StringBuilder builder = new StringBuilder();
 		builder.append("Comment [id=");
 		builder.append(id);
-		builder.append(", creationDate=");
-		builder.append(creationDate);
-		builder.append(", content=");
-		builder.append(content);
-		builder.append(", author=");
-		builder.append(author);
-		builder.append(", raiting=");
-		builder.append(raiting);
+		builder.append(", comment=");
+		builder.append(comment);
+		builder.append(", date=");
+		builder.append(date);
+		builder.append(", userId=");
+		builder.append(userId);
+		builder.append(", position=");
+		builder.append(position);
+		builder.append(", root=");
+		builder.append(root);
 		builder.append("]");
 		return builder.toString();
 	}
-	
-	
+
+		
 	
 }
