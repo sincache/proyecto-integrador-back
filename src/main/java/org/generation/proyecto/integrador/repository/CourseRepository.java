@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;;
 public interface CourseRepository extends JpaRepository<Course, Long>{
 	
 	Iterable<Course> findByName(String name); 
-	Iterable<Course> findByTime(int time); 
+	Iterable<Course> findByDateAdded(int dateAdded); 
 	Iterable<Course> findByLevel(String level);
 	
 					

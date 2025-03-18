@@ -1,6 +1,7 @@
 package org.generation.proyecto.integrador.service;
 
-import org.generation.proyecto.integrador.controller.Course;
+
+import org.generation.proyecto.integrador.model.Course;
 import org.springframework.data.domain.Page;
 
 public interface CourseService {
