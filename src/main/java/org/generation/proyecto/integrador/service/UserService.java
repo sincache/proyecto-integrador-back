@@ -4,6 +4,7 @@ import org.generation.proyecto.integrador.model.User;
 import org.springframework.data.domain.Page;
 
 public interface UserService {
+	
 	User createUser(User user);
 
 	User getUserById(Long id);
