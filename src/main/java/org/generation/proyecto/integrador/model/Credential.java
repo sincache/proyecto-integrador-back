@@ -1,3 +1,5 @@
+
+
 package org.generation.proyecto.integrador.model;
 
 
@@ -7,6 +9,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
   
 
@@ -24,19 +28,29 @@ public class Credential {
 	private String password;
 	@Column(name = "role", length = 45, nullable = false)
 	private  String role;
+	// Relación con Usuario
+    @OneToOne
+    @JoinColumn(name = "usuario_id", nullable = false) // Define el nombre de la columna FK en la base de datos
+    private User usersEntities;
+
 	
-   Credential(){
-	   
+   public Credential() {
+    // pequeña correccion
    }
 	
-	public Credential(long id, String credentialscol, String user, String password, String role) {
+	
+public Credential(long id, String credentialscol, String user, String password, String role, User usuarioEntidad, User usersEntities) {
 	super();
 	this.id = id;
 	this.credentialscol = credentialscol;
 	this.user = user;
 	this.password = password;
 	this.role = role;
+	this.usersEntities = usersEntities;
 }
+
+
+
 	public long getId() {
 		return id;
 	}
@@ -78,6 +92,17 @@ public class Credential {
 	public void setRole(String role) {
 		this.role = role;
 	}
+	
+
+	public User getusersEntities() {
+		return usersEntities;
+	}
+
+
+	public void setUsuarioEntidad(User usersEntities) {
+		this.usersEntities = usersEntities;
+	}
+
 
 	@Override
 	public String toString() {
@@ -92,6 +117,8 @@ public class Credential {
 		builder.append(password);
 		builder.append(", role=");
 		builder.append(role);
+		builder.append(", usersEntities=");
+		builder.append(usersEntities);
 		builder.append("]");
 		return builder.toString();
 	}
@@ -99,5 +126,3 @@ public class Credential {
 	
 	
 }
-	
-

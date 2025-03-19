@@ -1,6 +1,6 @@
 package org.generation.proyecto.integrador.repository;
 
-
+import java.util.Optional;
 import java.util.Set;
 
 import org.generation.proyecto.integrador.model.Credential;
@@ -10,15 +10,12 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.PagingAndSortingRepository;
 
 
-public interface CredentialRepository {
-	public interface credentialRepository extends CrudRepository<Credential, Long>, PagingAndSortingRepository<Credential, Long> {
-		Set<Credential> credentialscolfindBy(String credentialscol );
-
-		Set<Credential> userfindBy(String user);
-
-
-		Set<Credential>  passwordfindAllBy(String  password);
-
-		Page<Credential>  rolefindAllBy(Pageable  role);
+    public interface CredentialRepository extends CrudRepository<Credential, Long>, PagingAndSortingRepository<Credential, Long> {
+        Optional<Credential> credentialscolfindBy(String credentialscol );
+        
+        Set<Credential> userfindBy(String user);
+        Page<Credential>  rolefindAllBy(Pageable  role);
+        Page<Credential> findAllByActiveTrue(Pageable pageable);
+        Page<Credential> findAllByActiveFalse(Pageable pageable);
 }
-}
+
