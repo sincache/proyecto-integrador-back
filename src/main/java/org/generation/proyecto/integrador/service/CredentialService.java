@@ -15,6 +15,8 @@ public interface CredentialService {
 	void deleteCredential(Long id);
 
 	Credential getCredentialById(Long id);
+	
+	Credential getCredentialByCol(String credentialscol);
 
 	Page<Credential> getAllCredential(boolean isActive, int pageNumber, int pageSize);
 	
