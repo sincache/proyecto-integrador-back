@@ -15,7 +15,7 @@ import jakarta.persistence.Table;
   
 
 @Entity
-@Table(name = "credenciales")
+@Table(name = "credentials")
 public class Credential {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,7 +31,7 @@ public class Credential {
 	// Relación con Usuario
     @OneToOne
     @JoinColumn(name = "usuario_id", nullable = false) // Define el nombre de la columna FK en la base de datos
-    private User usuarioEntidad;
+    private User usersEntities;
 
 	
    public Credential() {
@@ -39,14 +39,14 @@ public class Credential {
    }
 	
 	
-public Credential(long id, String credentialscol, String user, String password, String role, User usuarioEntidad) {
+public Credential(long id, String credentialscol, String user, String password, String role, User usuarioEntidad, User usersEntities) {
 	super();
 	this.id = id;
 	this.credentialscol = credentialscol;
 	this.user = user;
 	this.password = password;
 	this.role = role;
-	this.usuarioEntidad = usuarioEntidad;
+	this.usersEntities = usersEntities;
 }
 
 
@@ -94,13 +94,13 @@ public Credential(long id, String credentialscol, String user, String password, 
 	}
 	
 
-	public User getUsuarioEntidad() {
-		return usuarioEntidad;
+	public User getusersEntities() {
+		return usersEntities;
 	}
 
 
-	public void setUsuarioEntidad(User usuarioEntidad) {
-		this.usuarioEntidad = usuarioEntidad;
+	public void setUsuarioEntidad(User usersEntities) {
+		this.usersEntities = usersEntities;
 	}
 
 
@@ -117,8 +117,8 @@ public Credential(long id, String credentialscol, String user, String password, 
 		builder.append(password);
 		builder.append(", role=");
 		builder.append(role);
-		builder.append(", usuarioEntidad=");
-		builder.append(usuarioEntidad);
+		builder.append(", usersEntities=");
+		builder.append(usersEntities);
 		builder.append("]");
 		return builder.toString();
 	}
