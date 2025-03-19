@@ -45,9 +45,9 @@ public class CommentController {
 	}
 
 	@PutMapping("deleteComment/{comentario_id}")
-	public ResponseEntity<?> deleteComment(@PathVariable String comentario_id) {
+	public ResponseEntity<?> deleteComment(@PathVariable Long comentario_id) {
 		//TODO: process PUT request
-		
+		commentService.deleteComment(comentario_id);
 		return ResponseEntity.ok("");
 	}
 	
