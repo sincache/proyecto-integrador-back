@@ -1,14 +1,15 @@
 package org.generation.proyecto.integrador.repository;
 
-import org.generation.proyecto.integrador.model.Course;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;;
+import java.time.*;
 
-@Repository 
-public interface CourseRepository extends JpaRepository<Course, Long>{
+import org.generation.proyecto.integrador.model.Course;
+import org.springframework.data.repository.*;
+
+
+public interface CourseRepository extends CrudRepository<Course, Long> {
 	
 	Iterable<Course> findByName(String name); 
-	Iterable<Course> findByDateAdded(int dateAdded); 
+	Iterable<Course> findByDateAdded(LocalDateTime dateAdded); 
 	Iterable<Course> findByLevel(String level);
 	
 					

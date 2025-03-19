@@ -25,18 +25,20 @@ public class Course {
 	@Column(name = "enlace_imagen", nullable = false, length = 250)
 	private String linkImage; 
 	
-	public Course(){
+	Course(){
 		
 	} 
 	
-	public Course(String name, String duration, String level, String link, LocalDateTime dateAdded, String linkImage) {
+	public Course(Long courseId, String name, String duration, String level, String link, LocalDateTime dateAdded, String linkImage) {
+		super();
+		this.courseId = courseId;
 		this.name = name;
-		this.duration = duration;
 		this.level = level;
-		this.link = link;
-		this.dateAdded = dateAdded;
-		this.linkImage = linkImage;
 	}
+	
+	public Course(String name, String duration, String level, String link, LocalDateTime dateAdded, String linkImage) {
+    	this(null, name, duration, level, link, dateAdded, linkImage);
+    }
 
 	public Long getCourseId() {
 		return courseId;
@@ -115,9 +117,4 @@ public class Course {
 		return builder.toString();
 	} 
 	
-	
-	
-	
-	
-
 }
