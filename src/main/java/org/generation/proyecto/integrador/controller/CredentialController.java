@@ -28,7 +28,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 		@GetMapping("{id}")
 		Credential getCredentialById(@PathVariable("id") Long id) {
-		    Credential existingCredential = credentialService.getCredentialById(id);
+			Credential existingCredential = credentialService.getCredentialById(id)
+				.orElseThrow(() -> new RuntimeException("Credential not found with id: " + id));
 		    return existingCredential;
 		}
 		

@@ -25,8 +25,8 @@ public class Credential {
 	@Column(name = "role", length = 45, nullable = false)
 	private  String role;
 	
-   Credential(){
-	   
+   public Credential() {
+    // pequeña correccion
    }
 	
 	public Credential(long id, String credentialscol, String user, String password, String role) {
