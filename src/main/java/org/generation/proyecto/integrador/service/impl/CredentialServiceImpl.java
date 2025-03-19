@@ -13,14 +13,22 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class CredentialServiceImpl implements CredentialService {
+
+	@Override
+	public Credential saveCredential(Credential credential) {
+		return credentialRepository.save(credential);
+	}
+	
+	@Autowired
 	private final CredentialRepository  credentialRepository;
+
 
     public CredentialServiceImpl(CredentialRepository customerRepository) {
         this.credentialRepository = customerRepository;
     }
 
     @SuppressWarnings("null")
-	@Autowired
+	
 	@Override
 	public Credential createCredential(Credential newCredential) {
         Optional<Credential> optionalCredential = credentialRepository.credentialscolfindBy(newCredential.getCredentialscol());
@@ -39,13 +47,12 @@ public class CredentialServiceImpl implements CredentialService {
 	}
 
 	@Override
-	public Credential getCredentialById(Long id) {
+	public Optional<Credential> getCredentialById(Long id) {
 		 Optional<Credential> optionalCredential = credentialRepository.findById(id);
-		    if (optionalCredential.isEmpty()) {
-		        throw new IllegalStateException("Credential does not exist id" + id);
-		    }
-		    Credential existingCustomer = optionalCredential.get();
-		        return existingCustomer;
+			if (optionalCredential.isEmpty()) {
+				throw new IllegalStateException("Credential does not exist id" + id);
+			}
+			return optionalCredential;
 	}
 
 	@Override
