@@ -5,24 +5,23 @@ import java.time.*;
 
 
 @Entity
-@Table(name = "cursos")
+@Table(name = "courses")
 public class Course {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "curso_id")
 	private Long courseId;
-	@Column(name = "nombre", nullable = false, length = 45)
+	@Column(name = "name", nullable = false, length = 45)
 	private String name;
-	@Column(name = "duracion", nullable = false, length = 45)
+	@Column(name = "duration", nullable = false, length = 45)
 	private String duration;
-	@Column(name = "nivel", nullable = false, length = 45)
+	@Column(name = "level", nullable = false, length = 45)
 	private String level;
-	@Column(name = "enlace", nullable = false, length = 45)
+	@Column(name = "link", nullable = false, length = 45)
 	private String link;
-	@Column(name = "fecha_agregado")
+	@Column(name = "date_added")
 	private LocalDateTime dateAdded;
-	@Column(name = "enlace_imagen", nullable = false, length = 250)
+	@Column(name = "link_image", nullable = false, length = 250)
 	private String linkImage; 
 	
 	Course(){
@@ -116,5 +115,4 @@ public class Course {
 		builder.append("]");
 		return builder.toString();
 	} 
-	
 }

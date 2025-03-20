@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @CrossOrigin(origins = "*")
 @RestController
-@RequestMapping("/api/v1/user")
+@RequestMapping("/api/v1/users")
 public class UserServiceImpl implements UserService {
 
 	private final UserRepository userRepository;
@@ -24,7 +24,6 @@ public class UserServiceImpl implements UserService {
 		this.userRepository = customerRepository;
 	}
 
-	@Autowired
 	@Override
 	public User createUser(User user) {
 		Optional<User> optionalUser = userRepository.findByEmail(user.getEmail());
@@ -57,14 +56,8 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public Page<User> getAllUsers(boolean isActive, int pageNumber, int pageSize) {
-		Page<User> users;
-		PageRequest pageAndSize = PageRequest.of(pageNumber, pageSize);
-		if (isActive) {
-			users = userRepository.findAllByActiveTrue(pageAndSize);
-		} else {
-			users = userRepository.findAllByActiveFalse(pageAndSize);
-		}
-		return users;
+	    PageRequest pageAndSize = PageRequest.of(pageNumber, pageSize);
+	    return userRepository.findAll(pageAndSize);
 	}
 
 	@Override

@@ -1,7 +1,6 @@
 package org.generation.proyecto.integrador.service.impl;
 
 import java.util.*;
-
 import org.generation.proyecto.integrador.model.*;
 import org.generation.proyecto.integrador.repository.*;
 import org.generation.proyecto.integrador.service.*;

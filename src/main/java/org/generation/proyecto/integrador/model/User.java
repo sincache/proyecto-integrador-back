@@ -22,7 +22,7 @@ public class User {
 		@Column(name = "email", length = 50, nullable = false, unique = true)
 		private String email;
 		@Column(name = "phone_number", length = 13, nullable = false, unique = true)
-		private Integer phone_number;
+		private String phone_number;
 		
 		User() {	
 		}
@@ -67,11 +67,11 @@ public class User {
 			this.email = email;
 		}
 
-		public Integer getPhone_number() {
+		public String getPhone_number() {
 			return phone_number;
 		}
 
-		public void setPhone_number(Integer phone_number) {
+		public void setPhone_number(String phone_number) {
 			this.phone_number = phone_number;
 		}
 

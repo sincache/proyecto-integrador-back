@@ -34,14 +34,14 @@ public class UserController {
 		return existingUser;
 	}
 
-	@GetMapping("/api/v1/users")
+	@GetMapping
 	Page<User> getAllUsers(@RequestParam(name = "active", required = false, defaultValue = "true") boolean isActive,
 			@RequestParam(name = "size", required = false, defaultValue = "5") int pageSize,
 			@RequestParam(name = "page", required = false, defaultValue = "0") int pageNumber) {
 		return userService.getAllUsers(isActive, pageNumber, pageSize);
 	}
 
-	@PostMapping
+	@PostMapping("/prueba")
 	ResponseEntity<User> createUser(@RequestBody User newUser) {
 		User registeredUser = userService.createUser(newUser);
 		return ResponseEntity.status(201).body(registeredUser);

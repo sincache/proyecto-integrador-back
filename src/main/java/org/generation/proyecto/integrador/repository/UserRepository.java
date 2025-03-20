@@ -14,8 +14,4 @@ public interface UserRepository extends CrudRepository<User, Long>, PagingAndSor
 	Iterable <User> findByFirstName(String firstname);
 
 	Optional  <User> findByEmail(String email);
-
-	Page<User> findAllByActiveTrue(Pageable pageable);
-
-	Page<User> findAllByActiveFalse(Pageable pageable);
 }
