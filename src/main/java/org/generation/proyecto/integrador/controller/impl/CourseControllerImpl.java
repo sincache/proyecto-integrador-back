@@ -1,15 +1,13 @@
 package org.generation.proyecto.integrador.controller.impl;
 
-import java.util.Set;
-
 import org.generation.proyecto.integrador.controller.CourseController;
 import org.generation.proyecto.integrador.model.Course;
 import org.generation.proyecto.integrador.service.CourseService;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 
-
-
+@Service
 @CrossOrigin(origins = "*") 
 @RestController 
 @RequestMapping("/api/v1/courses")
@@ -38,8 +36,8 @@ public class CourseControllerImpl implements CourseController {
 
 	@Override
 	@GetMapping
-	public ResponseEntity<Set<Course>> getAllCourse() {
-		Set<Course> courses = courseService.getAllCourse();
+	public ResponseEntity<Iterable <Course>> getAllCourses() {
+		Iterable <Course> courses = courseService.getAllCourses();
 		return ResponseEntity.ok(courses);
 	}
 
@@ -60,7 +58,7 @@ public class CourseControllerImpl implements CourseController {
 	@Override
 	@GetMapping("/product/{id}")
 	public ResponseEntity<Course> getProductById(@PathVariable Long id) {
-		Course course = courseService.getProductById(id);
+		Course course = courseService.getCourseById(id);
 		return ResponseEntity.ok(course);
 	}
 }

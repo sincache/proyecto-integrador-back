@@ -8,6 +8,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
@@ -21,23 +22,18 @@ public class Comment {
 	private String comment;
 	@Column(name = "fecha", nullable = false, length = 500)
 	private LocalDateTime date;
-	@OneToMany(mappedBy = "usuario_id_fk", cascade = CascadeType.ALL)
-    private Long userId;
-	@OneToMany(mappedBy = "position", cascade = CascadeType.ALL)
-    private Integer position;
-	@OneToMany(mappedBy = "root", cascade = CascadeType.ALL)
-    private Integer root;
+	@ManyToOne()
+    private User userId;
+  
 	
 	Comment(){}
 
-	public Comment(Long id, String comment, LocalDateTime date, Long userId, Integer position, Integer root) {
+	public Comment(Long id, String comment, LocalDateTime date, User userId, Integer position, Integer root) {
 		super();
 		this.id = id;
 		this.comment = comment;
 		this.date = date;
 		this.userId = userId;
-		this.position = position;
-		this.root = root;
 	}
 
 	public Long getId() {
@@ -64,28 +60,12 @@ public class Comment {
 		this.date = date;
 	}
 
-	public Long getUserId() {
+	public User getUserId() {
 		return userId;
 	}
 
-	public void setUserId(Long userId) {
+	public void setUserId(User userId) {
 		this.userId = userId;
-	}
-
-	public Integer getPosition() {
-		return position;
-	}
-
-	public void setPosition(Integer position) {
-		this.position = position;
-	}
-
-	public Integer getRoot() {
-		return root;
-	}
-
-	public void setRoot(Integer root) {
-		this.root = root;
 	}
 
 	@Override
@@ -99,11 +79,6 @@ public class Comment {
 		builder.append(date);
 		builder.append(", userId=");
 		builder.append(userId);
-		builder.append(", position=");
-		builder.append(position);
-		builder.append(", root=");
-		builder.append(root);
-		builder.append("]");
 		return builder.toString();
 	}
 

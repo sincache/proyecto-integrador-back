@@ -3,7 +3,13 @@ package org.generation.proyecto.integrador.service.impl;
 import org.generation.proyecto.integrador.model.Comment;
 import org.generation.proyecto.integrador.service.CommentService;
 import org.springframework.data.domain.Page;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
+@CrossOrigin(origins = "*")
+@RestController
+@RequestMapping("/api/v1/comment")
 public class CommentServiceImpl implements CommentService{
 
     @Override

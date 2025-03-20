@@ -42,7 +42,7 @@ public class UserController {
 	}
 
 	@PostMapping
-	ResponseEntity<User> createCustomer(@RequestBody User newUser) {
+	ResponseEntity<User> createUser(@RequestBody User newUser) {
 		User registeredUser = userService.createUser(newUser);
 		return ResponseEntity.status(201).body(registeredUser);
 	}

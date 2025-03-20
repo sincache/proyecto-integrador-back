@@ -1,3 +1,4 @@
+/*
 package org.generation.proyecto.integrador.repository;
 
 import org.generation.proyecto.integrador.model.Favorite;
@@ -20,3 +21,4 @@ public interface FavoriteRepository extends CrudRepository<Favorite, Long>, Pagi
     // Método para buscar favoritos por finalizado
     Page<Favorite> findByCompleted(String completed, Pageable pageable);
 }
+*/

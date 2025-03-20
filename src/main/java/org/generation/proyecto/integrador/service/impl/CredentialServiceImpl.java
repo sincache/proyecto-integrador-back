@@ -1,3 +1,4 @@
+/*
 package org.generation.proyecto.integrador.service.impl;
 
 import java.util.Optional;
@@ -10,7 +11,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
+@CrossOrigin(origins = "*")
+@RestController
+@RequestMapping("/api/v1/credential")
 @Service
 public class CredentialServiceImpl implements CredentialService {
 
@@ -19,19 +26,18 @@ public class CredentialServiceImpl implements CredentialService {
 		return credentialRepository.save(credential);
 	}
 	
-	@Autowired
-	private final CredentialRepository  credentialRepository;
+	private final CredentialRepository credentialRepository;
 
-
-    public CredentialServiceImpl(CredentialRepository customerRepository) {
-        this.credentialRepository = customerRepository;
+    @Autowired
+    public CredentialServiceImpl(CredentialRepository credentialRepository) {
+        this.credentialRepository = credentialRepository;
     }
 
     @SuppressWarnings("null")
 	
 	@Override
 	public Credential createCredential(Credential newCredential) {
-        Optional<Credential> optionalCredential = credentialRepository.credentialscolfindBy(newCredential.getCredentialscol());
+        Optional<Credential> optionalCredential = credentialRepository.findByCredentialscol(newCredential.getCredentialscol());
         if (optionalCredential.isPresent()) {
             throw new IllegalStateException("User already exist with credential " + newCredential.getCredentialscol());
         }
@@ -56,20 +62,8 @@ public class CredentialServiceImpl implements CredentialService {
 	}
 
 	@Override
-	public Page<Credential> getAllCredential(boolean isActive, int pageNumber, int pageSize) {
-		Page<Credential> credential = null;
-        PageRequest pageAndSize = PageRequest.of(pageNumber, pageSize);
-        if (isActive) {
-            pageAndSize = (PageRequest) credentialRepository.findAllByActiveTrue(pageAndSize);
-        } else {
-            pageAndSize = (PageRequest) credentialRepository.findAllByActiveFalse(pageAndSize);
-        }
-        return credential;
-	}
-
-	@Override
 	public Credential getCredentialByCol(String credentialscol) {
-	    Optional<Credential> optionalCredential = credentialRepository.credentialscolfindBy(credentialscol);
+	    Optional<Credential> optionalCredential = credentialRepository.findByCredentialscol(credentialscol);
 	    if (optionalCredential.isEmpty()) {
 	        throw new IllegalStateException("Credential does not exist credential " + credentialscol);
 	    }
@@ -78,3 +72,4 @@ public class CredentialServiceImpl implements CredentialService {
 	    }
 
 }
+*/

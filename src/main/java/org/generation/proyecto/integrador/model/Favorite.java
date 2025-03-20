@@ -1,4 +1,7 @@
-package org.generation.proyecto.integrador.model;
+/*
+ package org.generation.proyecto.integrador.model;
+ 
+
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -114,5 +117,6 @@ public class Favorite {
 	}
 
 }
+*/
 
 

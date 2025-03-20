@@ -1,3 +1,4 @@
+/*
 package org.generation.proyecto.integrador.service;
 
 import java.util.Optional;
@@ -20,16 +21,5 @@ public interface CredentialService {
 	Optional<Credential> getCredentialById(Long id);
 	
 	Credential getCredentialByCol(String credentialscol);
-
-	Page<Credential> getAllCredential(boolean isActive, int pageNumber, int pageSize);
-	
-	
-	
-	
-
-
-	
-
-	
-
 }
+*/

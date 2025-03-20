@@ -1,3 +1,4 @@
+/*
 package org.generation.proyecto.integrador.controller;
 
 import org.generation.proyecto.integrador.model.Credential;
@@ -58,3 +59,4 @@ import org.springframework.web.bind.annotation.RestController;
 			return ResponseEntity.noContent().build();
 		}
 }
+*/

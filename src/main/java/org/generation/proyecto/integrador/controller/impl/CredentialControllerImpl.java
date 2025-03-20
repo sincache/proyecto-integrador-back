@@ -1,4 +1,6 @@
-package org.generation.proyecto.integrador.controller.impl;
+/*
+ * package org.generation.proyecto.integrador.controller.impl;
+ *
 
 import org.generation.proyecto.integrador.model.Credential;
 import org.generation.proyecto.integrador.service.CredentialService;
@@ -60,3 +62,4 @@ public class CredentialControllerImpl {
 		return ResponseEntity.noContent().build();
 	}
 }
+*/

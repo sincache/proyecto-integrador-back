@@ -1,3 +1,4 @@
+/*
 package org.generation.proyecto.integrador.service;
 
 import org.generation.proyecto.integrador.model.Favorite;
@@ -15,3 +16,4 @@ public interface FavoriteService {
 
     Page<Favorite> getAllFavorites(boolean isActive, int pageNumber, int pageSize);
 }
+*/

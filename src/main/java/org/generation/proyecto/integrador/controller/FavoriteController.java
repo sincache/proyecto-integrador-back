@@ -1,3 +1,4 @@
+/*
 package org.generation.proyecto.integrador.controller;
 
 import org.generation.proyecto.integrador.model.Favorite;
@@ -56,3 +57,4 @@ public class FavoriteController {
         return ResponseEntity.noContent().build();
     }
 }
+*/
