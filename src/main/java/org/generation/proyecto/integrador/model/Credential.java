@@ -33,7 +33,7 @@ public class Credential {
 	@Column(name = "rol", nullable = false, length = 45)
 	private String rol;
 	
-	Credential(){
+	public Credential(){
 		
 	}
 	
