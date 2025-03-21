@@ -26,7 +26,7 @@ public class CourseController {
 		this.courseService = courseService;
 	}
 	
-	@PostMapping
+	@PostMapping("/crearcurso")
     public ResponseEntity<Course> createCourse(@RequestBody Course newCourse) {
         Course createdCourse = courseService.createCourse(newCourse);
         return ResponseEntity.ok(createdCourse);
@@ -56,7 +56,7 @@ public class CourseController {
         return course != null ? ResponseEntity.ok(course) : ResponseEntity.notFound().build();
     }
 	
-	@GetMapping
+	@GetMapping("/obtenercursos")
     public ResponseEntity<Iterable<Course>> getAllCourses() {
 		return ResponseEntity.ok( courseService.getAllCourses() );
 	}
