@@ -25,9 +25,9 @@ public class CredentialController {
         this.credentialService = credentialService;
     }
 
-    @GetMapping("/obtaincredential/{username}")
-    public ResponseEntity<Credential> getCredential(@PathVariable String username){
-        Credential credentialObtained= this.credentialService.getCredential(username);
+    @GetMapping("/obtaincredential/{email}")
+    public ResponseEntity<Credential> getCredential(@PathVariable("email") String email){
+        Credential credentialObtained= this.credentialService.getCredential(email);
         return credentialObtained != null ? ResponseEntity.ok(credentialObtained) : ResponseEntity.notFound().build();
     }
 

@@ -1,6 +1,7 @@
 package org.generation.proyecto.integrador.controller;
 
 import org.generation.proyecto.integrador.model.User;
+import org.generation.proyecto.integrador.service.CredentialService;
 import org.generation.proyecto.integrador.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -41,9 +42,9 @@ public class UserController {
 		return userService.getAllUsers(isActive, pageNumber, pageSize);
 	}
 
-	@PostMapping("/prueba")
-	ResponseEntity<User> createUser(@RequestBody User newUser) {
-		User registeredUser = userService.createUser(newUser);
+	@PostMapping("/crear/{password}")
+	ResponseEntity<User> createUser(@RequestBody User newUser, @PathVariable("password") String password) {
+		User registeredUser = userService.createUser(newUser, password);
 		return ResponseEntity.status(201).body(registeredUser);
 	}
 

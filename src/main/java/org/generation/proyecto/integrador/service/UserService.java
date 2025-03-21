@@ -5,7 +5,7 @@ import org.springframework.data.domain.Page;
 
 public interface UserService {
 	
-	User createUser(User user);
+	User createUser(User user, String password);
 
 	User getUserById(Long id);
 

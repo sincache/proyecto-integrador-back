@@ -3,12 +3,13 @@ package org.generation.proyecto.integrador.service.impl;
 import java.util.Optional;
 
 import org.generation.proyecto.integrador.model.User;
+import org.generation.proyecto.integrador.model.Credential;
 import org.generation.proyecto.integrador.repository.UserRepository;
+import org.generation.proyecto.integrador.service.CredentialService;
 import org.generation.proyecto.integrador.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,6 +18,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/v1/users")
 public class UserServiceImpl implements UserService {
+	
+	@Autowired
+	CredentialService credentialService;
 
 	private final UserRepository userRepository;
 
@@ -25,13 +29,21 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public User createUser(User user) {
+	public User createUser(User user, String password) {
 		Optional<User> optionalUser = userRepository.findByEmail(user.getEmail());
 		if (optionalUser.isPresent()) {
 			throw new IllegalStateException("User already exist with email " + user.getEmail());
 		}
+		
 		user.setId(null);
 		User newUser = userRepository.save(user);
+		Credential credential = new Credential();
+		credential.setUsers(user.getEmail());
+		credential.setUsersIdFk(newUser);
+		credential.setPassword(password);
+		credential.setCredentialscol("");
+		credential.setRol("admin");
+		credentialService.createCredential(credential);
 		return newUser;
 	}
 
